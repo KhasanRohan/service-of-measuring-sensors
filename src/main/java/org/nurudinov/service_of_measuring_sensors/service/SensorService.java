@@ -39,5 +39,9 @@ public class SensorService {
     public Optional<SensorEntity> findByName(String name) {
         return sensorRepository.findByName(name);
     }
+    @Transactional(readOnly = true)
+    public void delete() {
+        sensorRepository.deleteAll();
+    }
 
 }

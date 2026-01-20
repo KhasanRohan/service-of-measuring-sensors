@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.nurudinov.service_of_measuring_sensors.dto.MeasurementErrorResponse;
 import org.nurudinov.service_of_measuring_sensors.dto.SensorDTO;
+import org.nurudinov.service_of_measuring_sensors.dto.SensorDTOResponse;
 import org.nurudinov.service_of_measuring_sensors.exception.MeasurementException;
 import org.nurudinov.service_of_measuring_sensors.model.SensorEntity;
 import org.nurudinov.service_of_measuring_sensors.service.SensorService;
@@ -55,7 +56,7 @@ public class SensorController {
         }
 
         sensorService.saveSensor(sensorEntity);
-        return ResponseEntity.ok("Сенсор зарегистрирован");
+        return ResponseEntity.status(HttpStatus.CREATED).body(new SensorDTOResponse("Сенсор зарегистрирован"));
     }
 
     @ExceptionHandler
